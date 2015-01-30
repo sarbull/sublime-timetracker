@@ -10,7 +10,7 @@ class TimetrackerCommand(sublime_plugin.EventListener):
 
     string = open(home + '/.sublime-timetracker', 'r+').read()
 
-    # Get the filename of your saved file
+    # Get the filename of our saved file
     saved_file = view.file_name()
 
     # Check if your in any of your development projects   
@@ -20,7 +20,7 @@ class TimetrackerCommand(sublime_plugin.EventListener):
     output = saved_file + ":" + str(time.time()) + "\n"
     string = string + output;
 
-    f = open(save_to, 'w')
+    f = open(home + '/.sublime-timetracker', 'w')
     f.write(string)
     f.close()
 
