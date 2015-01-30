@@ -9,9 +9,11 @@ class TimetrackerCommand(sublime_plugin.EventListener):
     saved_file = view.file_name()
 
     # Check if your in any of your development projects   
-    #if 'dev/projects' in saved_file:
-    project = saved_file.split('projects/')[1].split('/')[0]
-    output = project + ":" + str(time.time()) + "\n"
+    #if 'dev/projets' in saved_file:
+    #project = saved_file.split('projects/')[1].split('/')[0]
+    #output = project + ":" + str(time.time()) + "\n"
+    current_filename = self.view.file_name()
+    output = current_filename + ":" + str(time.time()) + "\n"
     string = string + output;
 
     f = open('~/.sublime-timetracker', 'w')
