@@ -1,11 +1,13 @@
 import sublime, sublime_plugin
-
 import time
+from os.path import expanduser
 
 class TimetrackerCommand(sublime_plugin.EventListener):
   def on_post_save(self, view):
     # string = open("/Users/sarbull/.sublime-timetracker", 'r+').read()
-    save_to = os.path.join(os.path.dirname(__file__), '.sublime-timetracker')
+
+    save_to = expanduser("~/.sublime-timetracker")
+
     string = open(save_to, 'r+').read()
 
     # Get the filename of your saved file
