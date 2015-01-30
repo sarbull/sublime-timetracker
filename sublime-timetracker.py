@@ -14,7 +14,7 @@ class TimetrackerCommand(sublime_plugin.EventListener):
       output = project + ":" + str(time.time()) + "\n"
       string = string + output;
 
-      f = open('~/.timetracker', 'w')
+      f = open('~/.sublime-timetracker', 'w')
       f.write(string)
       f.close()
 
