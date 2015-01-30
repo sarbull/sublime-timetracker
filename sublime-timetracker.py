@@ -4,24 +4,21 @@ from os.path import expanduser
 
 class TimetrackerCommand(sublime_plugin.EventListener):
   def on_post_save(self, view):
-    # string = open("/Users/sarbull/.sublime-timetracker", 'r+').read()
-
-    home = expanduser("~")
-
-    string = open(home + '/.sublime-timetracker', 'r+').read()
-
-    # Get the filename of our saved file
+    home       = expanduser("~")
+    string     = open(home + '/.sublime-timetracker', 'r+').read()
     saved_file = view.file_name()
+    output     = saved_file + ":" + str(time.time()) + "\n"
+    string     = string + output;
+    f          = open(home + '/.sublime-timetracker', 'w')
 
-    # Check if your in any of your development projects   
-    #if 'dev/projes' in saved_file:
-    #project = saved_file.split('projects/')[1].split('/')[0]
-    #output = project + ":" + str(time.time()) + "\n"
-    output = saved_file + ":" + str(time.time()) + "\n"
-    string = string + output;
-
-    f = open(home + '/.sublime-timetracker', 'w')
     f.write(string)
     f.close()
 
-    #  pass
+    #data = open(home + "/.sublime-timetracker", "r+").read()
+    #array = data.split("\n")
+    #for (i, item) in enumerate(array):
+    #  array[i] = item.split(":")
+
+    #for (i, item) in enumerate(array):
+    #  d = datetime.utcfromtimestamp(float(array[i][1]))
+    #  array[i] = [array[i][0], d]
